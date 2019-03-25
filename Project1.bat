@@ -53,7 +53,10 @@ set /a digit_length=%temp%-%length%-1+%digit_length%
 set length=%temp%
 set numflag=0
 set num=
-goto operator
+set /a flag=%random%%%3
+if %flag% EQU 0 set string=%string%+
+if %flag% EQU 1 set string=%string%-
+if %flag% EQU 2 set string=%string%*
+goto frist_number
 :output
 echo %string%
-pause

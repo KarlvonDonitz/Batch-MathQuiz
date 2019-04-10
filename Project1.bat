@@ -2,18 +2,18 @@
 title Math_Quiz_Generator
 cls
 setlocal ENABLEDELAYEDEXPANSION
-set question_num=%1
+set question_num=100
 set total=0
-if defined %2 ( set input=%2 ) else ( set input=0 )
-if exist %input% set path=%2
-if %input% EQU New set path=%userprofile%\desktop\Question.txt
+set path=%~dp0
+set path=%path%Questions.txt
+set Max_digit_length=5
+c:>%path%
 :start
 set string=
 set num=0 
 set numflag=0
 set length=0
 set digit_length=0
-set Max_digit_length=10
 :first_number
 set /a flag=%random%%%8+1
 set string=%string%%flag%
@@ -77,5 +77,5 @@ goto start
 echo %string%=>>%path%
 goto check
 :end
-if exist %path% echo All above question have been exported to %path%
+echo All above question have been exported to %path%
 pause

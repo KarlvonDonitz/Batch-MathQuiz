@@ -1,11 +1,16 @@
-@echo on
-if exist %1 goto file_reader
-set /a ans=%1
-echo %ans%
-goto end
+@echo off
+setlocal ENABLEDELAYEDEXPANSION
+title Math_Quiz_Answer
+cls
+set path=%~dp0
+set path=%path%Answers.txt
+c:>%path%
 :file_reader
-for /f "delims==" %%a in (%1) do set string=%%a
-set /a ans=%string%
-echo %ans%
+for /f "delims==" %%i in (%1) DO (
+set string=%%i
+set /a ans=!string!
+echo !string!=!ans!>>%path%
+)
 :end
+echo All questions have been answered and entered into %path%
 pause
